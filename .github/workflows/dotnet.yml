@@ -1,0 +1,32 @@
+name: RaceDay API Build and Tests
+
+on:
+push:
+branches: [ "main", "master" ]
+pull_request:
+branches: [ "main", "master" ]
+workflow_dispatch:
+
+jobs:
+build-and-test:
+runs-on: windows-latest
+
+
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
+
+  - name: Set up .NET
+    uses: actions/setup-dotnet@v4
+    with:
+      dotnet-version: 8.0.x
+
+  - name: Restore dependencies
+    run: dotnet restore RaceDay.API.CSharp.slnx
+
+  - name: Build solution
+    run: dotnet build RaceDay.API.CSharp.slnx --configuration Release --no-restore
+
+  - name: Run tests
+    run: dotnet test RaceDay.API.Tests/RaceDay.API.Tests.csproj --configuration Release
+

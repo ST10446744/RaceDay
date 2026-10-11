@@ -1,0 +1,29 @@
+# Build output
+
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Visual Studio files
+
+.vs/
+*.user
+*.suo
+
+# Local configuration and secrets
+
+appsettings.Development.json
+.env
+.env.*
+
+# Test results
+
+TestResults/
+*.trx
+
+# Operating system files
+
+.DS_Store
+Thumbs.db
+desktop.ini
